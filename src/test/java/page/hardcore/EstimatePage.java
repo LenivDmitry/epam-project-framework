@@ -1,5 +1,7 @@
 package page.hardcore;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +12,9 @@ import page.AbstractPage;
 import java.util.Set;
 
 public class EstimatePage extends AbstractPage {
+
+    private final Logger logger = LogManager.getRootLogger();
+
     @FindBy(xpath = "//div[contains(text(),'VM class')]")
     private WebElement VMClass;
     @FindBy(xpath = "//div[contains(text(),'Instance type')]")
@@ -45,16 +50,21 @@ public class EstimatePage extends AbstractPage {
         window2_yopMailPage = getNameNewWindow(window1_googleCloudPlatformPricingCalculator);
         driver.switchTo().window(window2_yopMailPage);
 
+        logger.info(" Switched to YopMail page");
+
         yopMailPage = new YopMailPage(driver);
         yopMailPage.openPage();
         yopMailGeneratedAddressPage = yopMailPage.selectEmailGenerator();
         yopMailGeneratedAddressPage.copyRandomEmail();
+
+        logger.info(" Got random email");
 
         driver.switchTo().window(window1_googleCloudPlatformPricingCalculator);
         driver.switchTo().frame(0).switchTo().frame("myFrame");
 
         emailField.sendKeys(Keys.chord(Keys.LEFT_CONTROL, "v"));
         buttonSendEmail.click();
+        logger.info(" Sent cost to random email");
         return this;
     }
 
