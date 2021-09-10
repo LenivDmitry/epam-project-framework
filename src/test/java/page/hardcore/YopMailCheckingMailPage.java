@@ -22,6 +22,11 @@ public class YopMailCheckingMailPage extends AbstractPage {
         waitingVisibilityOfElement(messageAboutEmptyMail);
         while (messageAboutEmptyMail.getText().equals("Этот почтовый ящик пуст")){
             clickingOnAppearedElement(buttonRefreshMail);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         driver.switchTo().frame("ifmail");
         waitingVisibilityOfElement(totalCost);
