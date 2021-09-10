@@ -63,7 +63,11 @@ public class EstimatePage extends AbstractPage {
         driver.switchTo().frame(0).switchTo().frame("myFrame");
 
         emailField.sendKeys(Keys.chord(Keys.LEFT_CONTROL, "v"));
-        buttonSendEmail.click();
+        do {
+            buttonSendEmail.click();
+            logger.info(" Clicked send email's button");
+        }while (buttonSendEmail.isDisplayed());
+
         logger.info(" Sent cost to random email");
         return this;
     }
