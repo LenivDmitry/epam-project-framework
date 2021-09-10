@@ -33,6 +33,8 @@ public class EstimatePage extends AbstractPage {
     private WebElement emailField;
     @FindBy(xpath = "//button[@ng-disabled='emailForm.$invalid']")
     private WebElement buttonSendEmail;
+    @FindBy(xpath = "//form[@name='emailForm']")
+    private WebElement emailForm;
 
     private String window1_googleCloudPlatformPricingCalculator;
     private String window2_yopMailPage;
@@ -63,12 +65,12 @@ public class EstimatePage extends AbstractPage {
         driver.switchTo().frame(0).switchTo().frame("myFrame");
 
         emailField.sendKeys(Keys.chord(Keys.LEFT_CONTROL, "v"));
-        do {
-            buttonSendEmail.click();
-            logger.info(" Clicked send email's button");
-        }while (buttonSendEmail.isDisplayed());
-
+        buttonSendEmail.click();
         logger.info(" Sent cost to random email");
+        if (emailForm.isDisplayed()){
+            buttonSendEmail.click();
+            logger.info(" Sent cost to random email again");
+        }
         return this;
     }
 

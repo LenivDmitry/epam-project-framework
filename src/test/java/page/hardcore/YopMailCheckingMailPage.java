@@ -26,7 +26,6 @@ public class YopMailCheckingMailPage extends AbstractPage {
     public WebElement getTotalCost() {
         waitingVisibilityOfElement(messageAboutEmptyMail);
         while (messageAboutEmptyMail.getText().equals("Этот почтовый ящик пуст")){
-            clickingOnAppearedElement(buttonRefreshMail);
             try {
                 Thread.sleep(1000);
                 logger.info(" Waited a second");
@@ -35,6 +34,7 @@ public class YopMailCheckingMailPage extends AbstractPage {
             }
 
         }
+
         driver.switchTo().frame("ifmail");
         waitingVisibilityOfElement(totalCost);
         return totalCost;
