@@ -25,15 +25,27 @@ public class YopMailCheckingMailPage extends AbstractPage {
 
     public WebElement getTotalCost() {
         waitingVisibilityOfElement(messageAboutEmptyMail);
-        while (messageAboutEmptyMail.getText().equals("Этот почтовый ящик пуст")){
-            try {
-                Thread.sleep(1000);
-                logger.info(" Waited a second");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        for (int i = 0; i < 10; i++) {
+            if (messageAboutEmptyMail.getText().equals("Этот почтовый ящик пуст")){
+                try {
+                    Thread.sleep(1000);
+                    logger.info(" Waited a second");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                break;
             }
-
         }
+//        while (messageAboutEmptyMail.getText().equals("Этот почтовый ящик пуст")){
+//            try {
+//                Thread.sleep(1000);
+//                logger.info(" Waited a second");
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
 
         driver.switchTo().frame("ifmail");
         waitingVisibilityOfElement(totalCost);

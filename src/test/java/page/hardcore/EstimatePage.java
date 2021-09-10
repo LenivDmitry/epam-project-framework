@@ -31,7 +31,7 @@ public class EstimatePage extends AbstractPage {
     private WebElement emailEstimate;
     @FindBy(xpath = "//input[@ng-model='emailQuote.user.email']")
     private WebElement emailField;
-    @FindBy(xpath = "//button[@ng-disabled='emailForm.$invalid']")
+    @FindBy(xpath = "//button[@aria-label='Send Email']")
     private WebElement buttonSendEmail;
     @FindBy(xpath = "//form[@name='emailForm']")
     private WebElement emailForm;
