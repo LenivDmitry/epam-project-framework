@@ -67,10 +67,6 @@ public class EstimatePage extends AbstractPage {
         emailField.sendKeys(Keys.chord(Keys.LEFT_CONTROL, "v"));
         buttonSendEmail.click();
         logger.info(" Sent cost to random email");
-        if (emailForm.isDisplayed()){
-            buttonSendEmail.click();
-            logger.info(" Sent cost to random email again");
-        }
         return this;
     }
 
