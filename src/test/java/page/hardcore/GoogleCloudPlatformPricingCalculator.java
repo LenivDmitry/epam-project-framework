@@ -134,7 +134,7 @@ public class GoogleCloudPlatformPricingCalculator extends AbstractPage {
     public GoogleCloudPlatformPricingCalculator selectDatacenterLocation(String datacenterLocationName) {
         clickingOnAppearedElement(datacenterLocation);
         waitingVisibilityOfElement(SELECTED_DATACENTER_LOCATION, datacenterLocationName).click();
-        logger.info("Selectes datacenter location: " + datacenterLocationName);
+        logger.info("Select data center location: " + datacenterLocationName);
         return this;
     }
 

@@ -23,8 +23,6 @@ public class DriverSingleton {
                 }
                 default: {
                     WebDriverManager.chromedriver().setup();
-                    ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--disable-features=VizDisplayCompositor");
                     driver = new ChromeDriver();
                 }
             }

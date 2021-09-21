@@ -23,7 +23,7 @@ public class Hardcore extends CommonConditions {
     }
 
     @Test()
-    public void compareTotalCostInEmail() throws InterruptedException {
+    public void compareTotalCostInEmail() {
         Assert.assertTrue(estimatePage.getTotalEstimatedCost().contains(estimatePage.getTotalCostFromMail()));
     }
 }
