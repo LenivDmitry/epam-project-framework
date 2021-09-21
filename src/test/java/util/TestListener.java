@@ -20,7 +20,6 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
-
     }
 
     @Override
@@ -35,12 +34,12 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-
+        saveScreenshot();
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-
+        saveScreenshot();
     }
 
     @Override
@@ -56,7 +55,7 @@ public class TestListener implements ITestListener {
     private void saveScreenshot() {
         File screenCapture = ((TakesScreenshot) DriverSingleton.getDriver())
                 .getScreenshotAs(OutputType.FILE);
-        try {
+          try {
             FileUtils.copyFile(screenCapture, new File(
                     ".//target/screenshots/" + getCurrentTimeAsString() + ".png"));
         } catch (IOException e) {
